@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Лабораторна 3 - Діаграма станів</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.3/mermaid.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .diagram-container {
+        background-color: white;
+        margin: 20px 0;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+      }
+      .mermaid {
+        background-color: white;
+        padding: 15px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Лабораторна 3 - Діаграма станів</h1>
+    <div class="diagram-container">
+      <pre class="mermaid">
+            stateDiagram-v2
+                [*] --> Доступна
+                Доступна --> Заброньована: бронювання
+                Заброньована --> НаРуках: видача
+                НаРуках --> Доступна: повернення
+                НаРуках --> Прострочена: термін минув
+                Прострочена --> НаРуках: продовження
+                Прострочена --> Доступна: повернення
+        </pre
+      >
+    </div>
+    <script>
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "default",
+        securityLevel: "loose",
+      });
+    </script>
+    <script src="./js/bookStateManager.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

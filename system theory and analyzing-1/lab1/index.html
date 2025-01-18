@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Лабораторна 1 - Діаграма класів</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.3/mermaid.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .diagram-container {
+        background-color: white;
+        margin: 20px 0;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+      }
+      .mermaid {
+        background-color: white;
+        padding: 15px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Лабораторна 1 - Діаграма класів</h1>
+    <div class="diagram-container">
+      <pre class="mermaid">
+            classDiagram
+                class Book {
+                    +String title
+                    +String author
+                    +String ISBN
+                    +boolean isAvailable
+                    +checkOut()
+                    +returnBook()
+                }
+                class Member {
+                    +String name
+                    +String id
+                    +borrowBook()
+                    +returnBook()
+                }
+                class Library {
+                    +addBook()
+                    +removeBook()
+                    +findBook()
+                }
+                Library "1" -- "*" Book: contains
+                Member "1" -- "*" Book: borrows
+        </pre
+      >
+    </div>
+    <script>
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "default",
+        securityLevel: "loose",
+      });
+    </script>
+    <script src="js/book.js"></script>
+    <script src="js/member.js"></script>
+    <script src="js/library.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

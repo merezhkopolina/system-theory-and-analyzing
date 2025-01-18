@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Лабораторна 2 - Діаграма діяльності</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.3/mermaid.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .diagram-container {
+        background-color: white;
+        margin: 20px 0;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+      }
+      .mermaid {
+        background-color: white;
+        padding: 15px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Лабораторна 2 - Діаграма діяльності</h1>
+    <div class="diagram-container">
+      <pre class="mermaid">
+            flowchart TD
+                A[Початок] --> B[Пошук книги]
+                B --> C{Книга доступна?}
+                C -->|Так| D[Оформити замовлення]
+                C -->|Ні| E[Додати в список очікування]
+                D --> F[Видати книгу]
+                E --> G[Повідомити, коли буде доступна]
+                F --> H[Кінець]
+                G --> H
+        </pre
+      >
+    </div>
+    <script>
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "default",
+        securityLevel: "loose",
+      });
+    </script>
+    <script src="./js/bookOrderProcessor.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

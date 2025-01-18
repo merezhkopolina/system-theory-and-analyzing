@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>UML Діаграми - Демонстрація</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.3/mermaid.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .diagram-container {
+        background-color: white;
+        margin: 20px 0;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+      }
+      h2 {
+        color: #34495e;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+      }
+      .mermaid {
+        background-color: white;
+        padding: 15px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>UML Діаграми - Демонстрація</h1>
+
+    <div class="diagram-container">
+      <h2>1. Діаграма класів - Система бібліотеки</h2>
+      <pre class="mermaid">
+            classDiagram
+                class Book {
+                    +String title
+                    +String author
+                    +String ISBN
+                    +boolean isAvailable
+                    +checkOut()
+                    +returnBook()
+                }
+                class Member {
+                    +String name
+                    +String id
+                    +borrowBook()
+                    +returnBook()
+                }
+                class Library {
+                    +addBook()
+                    +removeBook()
+                    +findBook()
+                }
+                Library "1" -- "*" Book: contains
+                Member "1" -- "*" Book: borrows
+        </pre
+      >
+    </div>
+
+    <div class="diagram-container">
+      <h2>2. Діаграма діяльності - Процес замовлення книги</h2>
+      <pre class="mermaid">
+            flowchart TD
+                A[Початок] --> B[Пошук книги]
+                B --> C{Книга доступна?}
+                C -->|Так| D[Оформити замовлення]
+                C -->|Ні| E[Додати в список очікування]
+                D --> F[Видати книгу]
+                E --> G[Повідомити, коли буде доступна]
+                F --> H[Кінець]
+                G --> H
+        </pre
+      >
+    </div>
+
+    <div class="diagram-container">
+      <h2>3. Діаграма станів - Життєвий цикл книги</h2>
+      <pre class="mermaid">
+            stateDiagram-v2
+                [*] --> Доступна
+                Доступна --> Заброньована: бронювання
+                Заброньована --> НаРуках: видача
+                НаРуках --> Доступна: повернення
+                НаРуках --> Прострочена: термін минув
+                Прострочена --> НаРуках: продовження
+                Прострочена --> Доступна: повернення
+        </pre
+      >
+    </div>
+
+    <script>
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "default",
+        securityLevel: "loose",
+        flowchart: {
+          useMaxWidth: true,
+          htmlLabels: true,
+          curve: "basis",
+        },
+      });
+    </script>
+  </body>
+</html>
